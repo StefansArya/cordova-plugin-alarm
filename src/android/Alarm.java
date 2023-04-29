@@ -38,7 +38,7 @@ public class Alarm extends CordovaPlugin {
 
                 Intent intent = new Intent(this.cordova.getActivity(), AlarmReceiver.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), 0, intent, 0);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
                 AlarmManager alarmManager = (AlarmManager) (this.cordova.getActivity().getSystemService(Context.ALARM_SERVICE));
                 alarmManager.cancel(pendingIntent);
@@ -110,7 +110,7 @@ public class Alarm extends CordovaPlugin {
 
         Intent intent = new Intent(this.cordova.getActivity(), AlarmReceiver.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) (this.cordova.getActivity().getSystemService(Context.ALARM_SERVICE));
         AlarmManager.AlarmClockInfo clockInfo = new AlarmManager.AlarmClockInfo(time.getTime(), pendingIntent);
