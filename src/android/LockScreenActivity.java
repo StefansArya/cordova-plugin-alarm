@@ -12,8 +12,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.ionicframework.cordova.webview.IonicWebViewEngine;
-
 import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaWebViewImpl;
@@ -49,14 +47,6 @@ public class LockScreenActivity extends CordovaActivity {
         startRingTone();
 
         this.preferences.set("alarmFired", true);
-    }
-
-    @Override
-    protected CordovaWebView makeWebView() {
-        webView = new SystemWebView(this);
-        webView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-        layout.addView(webView);
-        return new CordovaWebViewImpl(new IonicWebViewEngine(webView, this.preferences));
     }
 
     @Override
