@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaWebViewEngine;
 import org.apache.cordova.CordovaWebViewImpl;
 import org.apache.cordova.engine.SystemWebView;
 
@@ -48,6 +49,14 @@ public class LockScreenActivity extends CordovaActivity {
 
         this.preferences.set("alarmFired", true);
     }
+    
+    @Override	
+    protected CordovaWebView makeWebView() {	
+        webView = new SystemWebView(this);	
+        webView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));	
+        layout.addView(webView);	
+        return new CordovaWebViewImpl(new CordovaWebViewEngine(webView, this.preferences));	
+    }	
 
     @Override
     protected void createViews() {
